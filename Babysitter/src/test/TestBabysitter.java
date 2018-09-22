@@ -16,19 +16,19 @@ public class TestBabysitter {
 	
 	@Test
 	public void testInvalidTimeThatIsLessThanZeroIsRejected() {
-		IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-			new Babysitter(-1, Babysitter.LATEST_BEDTIME, Babysitter.LATEST_END_TIME);
-		});
-		
-		assertEquals("Hours must be non-negative.", exception.getMessage());
+		checkErrorMessagesGivenInvalidTimes(-1, Babysitter.LATEST_BEDTIME, Babysitter.LATEST_END_TIME, Babysitter.HOURS_MUST_BE_NON_NEGATIVE);
 	}
 	
 	@Test
 	public void testInvalidTimeThatIsGreaterThanTwnetyThreeIsRejected() {
+		checkErrorMessagesGivenInvalidTimes(Integer.MAX_VALUE, Babysitter.LATEST_BEDTIME, Babysitter.LATEST_END_TIME, Babysitter.HOURS_MUST_BE_LESS_THAN_TWENTY_FOUR);
+	}
+	
+	private void checkErrorMessagesGivenInvalidTimes(int startTime, int bedtime, int endTime, String expectedExceptionMessage) {
 		IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-			new Babysitter(Integer.MAX_VALUE, Babysitter.LATEST_BEDTIME, Babysitter.LATEST_END_TIME);
+			new Babysitter(startTime, bedtime, endTime);
 		});
 		
-		assertEquals("Hours must be less than 24.", exception.getMessage());
+		assertEquals(expectedExceptionMessage, exception.getMessage());
 	}
 }
