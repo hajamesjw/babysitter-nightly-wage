@@ -12,15 +12,15 @@ public class Babysitter {
 		validateTimesAreNotOverTwentyThree(startTime, bedtime, endTime);
 	}
 
-	private void validateTimesAreNotOverTwentyThree(int startTime, int bedtime, int endTime) {
-		if (startTime > 23 || bedtime > 23 || endTime > 23) {
-			throw new IllegalArgumentException();
-		}
-	}
-
 	private void validateTimesAreNotNegative(int startTime, int bedtime, int endTime) {
 		if (startTime < 0 || bedtime < 0 || endTime < 0) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Hours must be non-negative.");
+		}
+	}
+	
+	private void validateTimesAreNotOverTwentyThree(int startTime, int bedtime, int endTime) {
+		if (startTime > 23 || bedtime > 23 || endTime > 23) {
+			throw new IllegalArgumentException("Hours must be less than 24.");
 		}
 	}
 }
