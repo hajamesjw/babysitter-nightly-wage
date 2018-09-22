@@ -7,7 +7,7 @@ import main.Babysitter;
 public class TestBabysitter {
 
 	@Test
-	public void testValidStartTimeIsAccepted() {
-		new Babysitter(17);
-	}	
+	public void testValidStartTimeBedtimeAndEndTimeAreAccepted() {
+		new Babysitter(Babysitter.EARLIEST_START_TIME, Babysitter.LATEST_BEDTIME, Babysitter.LATEST_END_TIME);
+	}
 }
