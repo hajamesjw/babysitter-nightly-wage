@@ -22,7 +22,6 @@ public class Babysitter {
 	public static final String INVALID_BEDTIME_BEFORE_START_TIME_MESSAGE = "Bedtime cannot be before start time.";
 	public static final String INVALID_END_TIME_BEFORE_START_TIME_MESSAGE = "End time cannot be before start time.";
 
-	
 	private int startTime;
 	private int bedtime;
 	private int endTime;
