@@ -74,13 +74,13 @@ public class BabysitterTest {
 		if (time == 1) { 
 			return 24;
 		}
-		return Integer.valueOf(time) - 1;
+		return time - 1;
 	}
 	
 	private int oneHourAfter(int time) {
 		if (time == 24) {
 			return 1;
 		}
-		return Integer.valueOf(time) + 1;
+		return time + 1;
 	}
 }

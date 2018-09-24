@@ -13,23 +13,16 @@ public class NightlyWageCalculator {
 	}
 	
 	private static BigDecimal totalBedtimeToMidnightAmount(Babysitter babysitter) {
-		if(endTimeIsAfterMidnight(babysitter)) {
+		if(Babysitter.isEndTimeAfterMidnight(babysitter.getEndTime())) {
 			return new BigDecimal(Babysitter.WAGE_BEDTIME_TO_MIDNIGHT * (24 - babysitter.getBedtime()));
 		}
 		return new BigDecimal(Babysitter.WAGE_BEDTIME_TO_MIDNIGHT * (babysitter.getEndTime() - babysitter.getBedtime()));
 	}
 	
 	private static BigDecimal totalMidnightToEndTimeAmount(Babysitter babysitter) {
-		if(endTimeIsAfterMidnight(babysitter)) {
+		if(Babysitter.isEndTimeAfterMidnight(babysitter.getEndTime())) {
 			return new BigDecimal(Babysitter.WAGE_MIDNIGHT_TO_END * babysitter.getEndTime());
 		}
 		return BigDecimal.ZERO;
-	}
-
-	//The scope of this application is calculating wage for one night of babysitting.
-	//If end time is less than the earliest start time, 
-	//that time will be have to be in the next day after midnight.
-	private static boolean endTimeIsAfterMidnight(Babysitter babysitter) {
-		return babysitter.getEndTime() < Babysitter.START_TIME_EARLIEST;
 	}
 }

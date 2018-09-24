@@ -2,10 +2,13 @@ package com.jamesha.babysitterKata;
 
 public class Babysitter {
 
-	public static final int START_TIME_EARLIEST = 17;
+	//According to the original specifications, these 4 fields (startTimes and bedtimes) can range from from the earliest start time to 11PM.
+	//An enhancement will be required if the product owner wants to adjust these fields to go past midnight. 
+	public static final int START_TIME_EARLIEST = 17; //Hours are represented from 1-24.
 	public static final int START_TIME_LATEST = 23;
 	public static final int BEDTIME_EARLIEST = START_TIME_EARLIEST;
 	public static final int BEDTIME_LATEST = 23;
+	
 	public static final int END_TIME_EARLIEST = START_TIME_EARLIEST;
 	public static final int END_TIME_LATEST = 4;
 	
@@ -79,8 +82,14 @@ public class Babysitter {
 		if (bedtime < startTime) {
 			throw new IllegalArgumentException(INVALID_BEDTIME_BEFORE_START_TIME_MESSAGE);
 		}
-		if (endTime < startTime && endTime > END_TIME_LATEST) {
+		if (endTime < startTime && !isEndTimeAfterMidnight(endTime)) {
 			throw new IllegalArgumentException(INVALID_END_TIME_BEFORE_START_TIME_MESSAGE);
 		}
+	}
+	
+	public static boolean isEndTimeAfterMidnight(int endTime) {
+		//The scope of this application is calculating wage for one night of babysitting (not exceeding 24 hours in total).
+		//Therefore, if end time is less than the earliest possible start time, that time will be have to be in the next day after midnight.
+		return endTime < START_TIME_EARLIEST;
 	}
 }
