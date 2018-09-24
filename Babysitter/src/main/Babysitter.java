@@ -1,7 +1,5 @@
 package main;
 
-import java.math.BigDecimal;
-
 public class Babysitter {
 
 	public static final int START_TIME_EARLIEST = 17;
@@ -20,10 +18,6 @@ public class Babysitter {
 	
 	public Babysitter(int startTime, int bedtime, int endTime) {
 		validateTimes(startTime, bedtime, endTime);
-	}
-	
-	public static BigDecimal calculateNightlyWage(int startTime, int endTime) {
-		return BigDecimal.ZERO;
 	}
 	
 	private void validateTimes(int startTime, int bedtime, int endTime) {

@@ -3,8 +3,6 @@ package test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import java.math.BigDecimal;
-
 import org.junit.jupiter.api.Test;
 
 import main.Babysitter;
@@ -54,11 +52,6 @@ public class TestBabysitter {
 	@Test
 	public void testInvalidEndTimeAfterLatestEndTimeIsRejected() {
 		verifyExceptionMessageGivenIllegalArguments(Babysitter.START_TIME_EARLIEST, Babysitter.BEDTIME_LATEST, oneHourAfter(Babysitter.END_TIME_LATEST), Babysitter.INVALID_END_TIME_MESSAGE);
-	}
-	
-	@Test
-	public void testSameStartTimeAndEndTimeCalculatesZeroWage() {
-		assertEquals(BigDecimal.ZERO, Babysitter.calculateNightlyWage(Babysitter.START_TIME_EARLIEST, Babysitter.END_TIME_EARLIEST));
 	}
 	
 	private void verifyExceptionMessageGivenIllegalArguments(int startTime, int bedtime, int endTime, String expectedExceptionMessage) {
