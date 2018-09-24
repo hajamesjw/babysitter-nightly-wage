@@ -9,6 +9,9 @@ This application calculates total wage for a babysitter working and getting paid
 * gets paid $16/hour from midnight to end of job
 * gets paid for full hours (no fractional hours)
 
-**Further requirements**:
+**Further requirements provided by the product owner upon request**:
+* bedtime no earlier than 5:00PM
 * bedtime no later than 11:00PM
+* starts no later than 11:00PM
+* if bedtime is on start-time, bedtime rate is used over the start-time rate
 * hour is the smallest unit of time tracked
