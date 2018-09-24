@@ -1,4 +1,4 @@
-package test;
+package com.jamesha.babysitterKata;
 
 import static org.junit.Assert.assertEquals;
 
@@ -6,10 +6,7 @@ import java.math.BigDecimal;
 
 import org.junit.jupiter.api.Test;
 
-import main.Babysitter;
-import main.NightlyWageCalculator;
-
-public class TestNightlyWageCalculator {
+public class NightlyWageCalculatorTest {
 	
 	@Test
 	public void testSameStartTimeAndEndTimeCalculatesZeroWage() {

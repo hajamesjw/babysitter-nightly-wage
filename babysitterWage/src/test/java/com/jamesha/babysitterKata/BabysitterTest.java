@@ -1,13 +1,11 @@
-package test;
+package com.jamesha.babysitterKata;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
-import main.Babysitter;
-
-public class TestBabysitter {
+public class BabysitterTest {
 
 	@Test
 	public void testValidStartTimeBedtimeAndEndTimeAreAccepted() {

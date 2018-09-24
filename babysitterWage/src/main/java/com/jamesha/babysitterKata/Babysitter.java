@@ -1,4 +1,4 @@
-package main;
+package com.jamesha.babysitterKata;
 
 public class Babysitter {
 
