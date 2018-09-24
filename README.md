@@ -20,6 +20,10 @@ This application calculates total wage for a babysitter working and getting paid
 
 This is a Maven project. To test and build the project, navigate to ~/babysitterWage/ in Terminal and run the following commands.
 
-To run the tests: _mvn test_
+To run the tests and build the project: 
 
-To build the project: _mvn clean package_
+* _mvn clean package_
+
+To execute the app, go to ~babysitterWage/Target/ and run the generated jar. Arguments of times are represnted from 1-24 (e.g. 5:00PM is 17):
+
+* _java -jar jar-file-name.jar "int-start-time" "int-bedtime" "int-end-time"_
