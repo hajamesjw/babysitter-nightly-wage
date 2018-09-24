@@ -15,13 +15,13 @@ public class TestBabysitter {
 	}
 	
 	@Test
-	public void testInvalidTimeThatIsLessThanZeroIsRejected() {
-		checkErrorMessagesGivenInvalidTimes(-1, Babysitter.LATEST_BEDTIME, Babysitter.LATEST_END_TIME, Babysitter.HOURS_MUST_BE_NON_NEGATIVE);
+	public void testInvalidTimeLessThanOneIsRejected() {
+		checkErrorMessagesGivenInvalidTimes(Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE, Babysitter.INVALID_TIME_RANGES);
 	}
 	
 	@Test
-	public void testInvalidTimeThatIsGreaterThanTwnetyThreeIsRejected() {
-		checkErrorMessagesGivenInvalidTimes(Integer.MAX_VALUE, Babysitter.LATEST_BEDTIME, Babysitter.LATEST_END_TIME, Babysitter.HOURS_MUST_BE_LESS_THAN_TWENTY_FOUR);
+	public void testInvalidTimeGreaterThanTwnetyFourIsRejected() {
+		checkErrorMessagesGivenInvalidTimes(Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE, Babysitter.INVALID_TIME_RANGES);
 	}
 	
 	private void checkErrorMessagesGivenInvalidTimes(int startTime, int bedtime, int endTime, String expectedExceptionMessage) {

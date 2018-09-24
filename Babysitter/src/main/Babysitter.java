@@ -6,28 +6,19 @@ public class Babysitter {
 	public static final int LATEST_BEDTIME = 23;
 	public static final int LATEST_END_TIME = 4;
 	
-	public static final String HOURS_MUST_BE_NON_NEGATIVE = "Hours must be non-negative.";
-	public static final String HOURS_MUST_BE_LESS_THAN_TWENTY_FOUR = "Hours must be less than 24.";
+	public static final String INVALID_TIME_RANGES = "Valid time inputs must be from 1 to 24.";
 	
 	public Babysitter(int startTime, int bedtime, int endTime) {
 		validateTimes(startTime, bedtime, endTime);
 	}
 
 	private void validateTimes(int startTime, int bedtime, int endTime) {
-		//One day consists of hours 0 through 23
-		validateTimesAreNotNegative(startTime, bedtime, endTime);
-		validateTimesAreNotOverTwentyThree(startTime, bedtime, endTime);
+		validateTimesAreFromOneToTwentyFour(startTime, bedtime, endTime);
 	}
 
-	private void validateTimesAreNotNegative(int startTime, int bedtime, int endTime) {
-		if (startTime < 0 || bedtime < 0 || endTime < 0) {
-			throw new IllegalArgumentException(HOURS_MUST_BE_NON_NEGATIVE);
-		}
-	}
-	
-	private void validateTimesAreNotOverTwentyThree(int startTime, int bedtime, int endTime) {
-		if (startTime > 23 || bedtime > 23 || endTime > 23) {
-			throw new IllegalArgumentException(HOURS_MUST_BE_LESS_THAN_TWENTY_FOUR);
+	private void validateTimesAreFromOneToTwentyFour(int startTime, int bedtime, int endTime) {
+		if (startTime < 1 || bedtime < 1 || endTime < 1 || startTime > 24 || bedtime > 24 || endTime > 24) {
+			throw new IllegalArgumentException(INVALID_TIME_RANGES);
 		}
 	}
 }
