@@ -4,10 +4,14 @@ public class Babysitter {
 
 	public static final int START_TIME_EARLIEST = 17;
 	public static final int START_TIME_LATEST = 23;
-	public static final int BEDTIME_EARLIEST = 17;
+	public static final int BEDTIME_EARLIEST = START_TIME_EARLIEST;
 	public static final int BEDTIME_LATEST = 23;
 	public static final int END_TIME_EARLIEST = START_TIME_EARLIEST;
 	public static final int END_TIME_LATEST = 4;
+	
+	public static final int WAGE_START_TO_BEDTIME = 12;
+	public static final int WAGE_BEDTIME_TO_MIDNIGHT = 8;
+	public static final int WAGE_MIDNIGHT_TO_END = 18;
 	
 	public static final String INVALID_TIME_RANGES_MESSAGE = "Valid time inputs must be from 1 to 24.";
 	public static final String INVALID_EARLY_START_TIME_MESSAGE = "Start time cannot be before " + START_TIME_EARLIEST + ".";
@@ -15,18 +19,27 @@ public class Babysitter {
 	public static final String INVALID_EARLY_BEDTIME_MESSAGE = "Bedtime cannot be before " + BEDTIME_EARLIEST + ".";
 	public static final String INVALID_LATE_BEDTIME_MESSAGE = "Bedtime cannot be after " + BEDTIME_LATEST + ".";
 	public static final String INVALID_END_TIME_MESSAGE = "End time must be between " + END_TIME_EARLIEST + " and " + END_TIME_LATEST + ".";
+	public static final String INVALID_BEDTIME_BEFORE_START_TIME_MESSAGE = "Bedtime cannot be before start time.";
+	public static final String INVALID_END_TIME_BEFORE_START_TIME_MESSAGE = "End time cannot be before start time.";
+
 	
 	private int startTime;
+	private int bedtime;
 	private int endTime;
 	
 	public Babysitter(int startTime, int bedtime, int endTime) {
 		validateTimes(startTime, bedtime, endTime);
 		this.startTime = startTime;
+		this.bedtime = bedtime;
 		this.endTime = endTime;
 	}
 	
 	public int getStartTime() {
 		return startTime;
+	}
+	
+	public int getBedtime() {
+		return bedtime;
 	}
 
 	public int getEndTime() {
@@ -36,6 +49,7 @@ public class Babysitter {
 	private void validateTimes(int startTime, int bedtime, int endTime) {
 		validateTimesAreFromOneToTwentyFour(startTime, bedtime, endTime);
 		validateTimesAgainstEarliestAndLatestAllowedTimes(startTime, bedtime, endTime);
+		validateBedtimeAndEndTimeNotBeforeStartTime(startTime, bedtime, endTime);
 	}
 
 	private void validateTimesAreFromOneToTwentyFour(int startTime, int bedtime, int endTime) {
@@ -59,6 +73,15 @@ public class Babysitter {
 		}
 		if (endTime < END_TIME_EARLIEST && endTime > END_TIME_LATEST) {
 			throw new IllegalArgumentException(INVALID_END_TIME_MESSAGE);
+		}
+	}
+	
+	private void validateBedtimeAndEndTimeNotBeforeStartTime(int startTime, int bedtime, int endTime) {
+		if (bedtime < startTime) {
+			throw new IllegalArgumentException(INVALID_BEDTIME_BEFORE_START_TIME_MESSAGE);
+		}
+		if (endTime < startTime && endTime > END_TIME_LATEST) {
+			throw new IllegalArgumentException(INVALID_END_TIME_BEFORE_START_TIME_MESSAGE);
 		}
 	}
 }

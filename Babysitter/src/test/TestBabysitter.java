@@ -54,6 +54,16 @@ public class TestBabysitter {
 		verifyExceptionMessageGivenIllegalArguments(Babysitter.START_TIME_EARLIEST, Babysitter.BEDTIME_LATEST, oneHourAfter(Babysitter.END_TIME_LATEST), Babysitter.INVALID_END_TIME_MESSAGE);
 	}
 	
+	@Test
+	public void testInvalidBedimeBeforeStartTimeIsRejected() {
+		verifyExceptionMessageGivenIllegalArguments(18, 17, Babysitter.END_TIME_LATEST, Babysitter.INVALID_BEDTIME_BEFORE_START_TIME_MESSAGE);
+	}
+	
+	@Test
+	public void testInvalidEndTimeBeforeStartTimeIsRejected() {
+		verifyExceptionMessageGivenIllegalArguments(18, Babysitter.BEDTIME_LATEST, 17, Babysitter.INVALID_END_TIME_BEFORE_START_TIME_MESSAGE);
+	}
+	
 	private void verifyExceptionMessageGivenIllegalArguments(int startTime, int bedtime, int endTime, String expectedExceptionMessage) {
 		IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
 			new Babysitter(startTime, bedtime, endTime);

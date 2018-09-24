@@ -17,7 +17,17 @@ public class TestNightlyWageCalculator {
 	}
 	
 	@Test
-	public void testBedtimeAndEndtimeOneHourAfterStartTimeBeforeMidnight() {
-		assertEquals(new BigDecimal(12), NightlyWageCalculator.calculateNightlyWage(new Babysitter(17, 18, 18)));
+	public void testBedtimeAndEndTimeOneHourAfterStartTimeBeforeMidnight() {
+		assertEquals(new BigDecimal(Babysitter.WAGE_START_TO_BEDTIME), NightlyWageCalculator.calculateNightlyWage(new Babysitter(17, 18, 18)));
+	}
+	
+	@Test
+	public void testBedtimeOneHourAfterStartTimeAndEndTimeOneHourAfterBedtimeBeforeMidnight() {
+		assertEquals(new BigDecimal(Babysitter.WAGE_START_TO_BEDTIME + Babysitter.WAGE_BEDTIME_TO_MIDNIGHT), NightlyWageCalculator.calculateNightlyWage(new Babysitter(17, 18, 19)));
+	}
+	
+	@Test
+	public void testEndTimeGoingInToNextDay() {
+		assertEquals(new BigDecimal(Babysitter.WAGE_START_TO_BEDTIME + Babysitter.WAGE_BEDTIME_TO_MIDNIGHT + 2 * Babysitter.WAGE_MIDNIGHT_TO_END), NightlyWageCalculator.calculateNightlyWage(new Babysitter(22, 23, 2)));
 	}
 }
