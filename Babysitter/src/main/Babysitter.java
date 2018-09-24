@@ -16,8 +16,21 @@ public class Babysitter {
 	public static final String INVALID_LATE_BEDTIME_MESSAGE = "Bedtime cannot be after " + BEDTIME_LATEST + ".";
 	public static final String INVALID_END_TIME_MESSAGE = "End time must be between " + END_TIME_EARLIEST + " and " + END_TIME_LATEST + ".";
 	
+	private int startTime;
+	private int endTime;
+	
 	public Babysitter(int startTime, int bedtime, int endTime) {
 		validateTimes(startTime, bedtime, endTime);
+		this.startTime = startTime;
+		this.endTime = endTime;
+	}
+	
+	public int getStartTime() {
+		return startTime;
+	}
+
+	public int getEndTime() {
+		return endTime;
 	}
 	
 	private void validateTimes(int startTime, int bedtime, int endTime) {
